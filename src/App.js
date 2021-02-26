@@ -6,7 +6,6 @@ import axios from "axios";
 import "./App.css";
 import { Container, Grid } from "@material-ui/core";
 
-
 const url = "https://www.sbir.gov/api/solicitations.json?keyword=sbir";
 
 function App() {
@@ -16,16 +15,19 @@ function App() {
 	// Fetching data from API
 	const fetchData = async () => {
 		/*  There is a CORS problem with the API that affected the render process, I do some research and come out with this solution */
-		const { data } = await axios.get(
-			`https://cors-anywhere.herokuapp.com/${url}`
+		const {
+			data: { contents },
+		} = await axios.get(
+			`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`
 		);
+		const finalData = JSON.parse(contents);
 		setIsLoading(false);
-		setGrantData(data);
+		setGrantData(finalData);
 	};
 
 	useEffect(() => {
 		fetchData();
-	}, [grantData]);
+	}, []);
 
 	return (
 		<Container>

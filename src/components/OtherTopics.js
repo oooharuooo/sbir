@@ -13,7 +13,8 @@ const OtherTopics = ({ otherTopic: { solicitation_topics } }) => {
 				justifyContent="space-evenly"
 				bgcolor="rgb(247, 219, 219)"
 			>
-				{solicitation_topics.map(({ topic_title,i}) => {
+				{solicitation_topics.map((solicitation_topics, i) => {
+					const { topic_title } = solicitation_topics;
 					return <p key={i}>{topic_title}</p>;
 				})}
 			</Box>
