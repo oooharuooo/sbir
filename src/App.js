@@ -6,7 +6,8 @@ import axios from "axios";
 import "./App.css";
 import { Container, Grid} from "@material-ui/core";
 
-const url = "https://www.sbir.gov/api/solicitations.json?keyword=sbir";
+const url =
+	"https://cors-anywhere.herokuapp.com/https://www.sbir.gov/api/solicitations.json?keyword=sbir";
 
 function App() {
 	const [grantData, setGrantData] = useState([]);
